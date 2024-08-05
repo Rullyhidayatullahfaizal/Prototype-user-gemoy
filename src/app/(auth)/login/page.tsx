@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import gemoyimg from "../../../../public/assets/gemoy-img.png";
@@ -6,6 +6,8 @@ import { Rewind } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -17,19 +19,19 @@ const LoginPage = () => {
   };
 
   const handleRewindClick = () => {
-    router.push('/');
+    router.push("/");
   };
   return (
     <>
-      <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+      <div className="min-h-screen bg-customBiru text-gray-900 flex justify-center">
         <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
           <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
             <div>
-            <Rewind
-                weight="fill" 
-                size={32} 
-                className="cursor-pointer transition-transform duration-300 hover:scale-125" 
-                onClick={handleRewindClick} 
+              <Rewind
+                weight="fill"
+                size={32}
+                className="cursor-pointer transition-transform duration-300 hover:scale-125"
+                onClick={handleRewindClick}
               />
             </div>
             <div className="mt-12 flex flex-col items-center">
@@ -75,21 +77,30 @@ const LoginPage = () => {
 
                 <div className="my-12 border-b text-center">
                   <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-                    Do you have account ? <Link href ="/register" className="font-bold hover:text-red-700 hover:underline">Register</Link> 
+                    Do you have account ?{" "}
+                    <Link
+                      href="/register"
+                      className="font-bold hover:text-red-700 hover:underline"
+                    >
+                      Register
+                    </Link>
                   </div>
                 </div>
 
-                <div className="mx-auto max-w-xs">
-                  <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                    type="email"
-                    placeholder="Email"
-                  />
-                  <input
-                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="Password"
-                  />
+                <div className="mx-auto max-w-xs ">
+                  <div className="grid gap-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="m@example.com"
+                      required
+                    />
+                  </div>
+                  <div className="grid gap-2 mt-2">
+                    <Label htmlFor="password">Password</Label>
+                    <Input id="password" type="password" required />
+                  </div>
                   <button className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                     <svg
                       className="w-6 h-6 -ml-2"
