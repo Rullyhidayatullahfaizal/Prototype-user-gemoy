@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import gemoyimg from "../../../../public/assets/gemoy-img.png";
-import { Rewind } from "@phosphor-icons/react";
+import { EyeSlash, Rewind } from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Eye } from "lucide-react";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    setShowPassword((prevState) => !prevState);
   };
 
   const handleRewindClick = () => {
@@ -35,7 +36,7 @@ const LoginPage = () => {
               />
             </div>
             <div className="mt-12 flex flex-col items-center">
-              <h1 className="text-2xl xl:text-3xl font-extrabold">Sign up</h1>
+              <h1 className="text-2xl xl:text-3xl font-extrabold">Sign in</h1>
               <div className="w-full flex-1 mt-8">
                 <div className="flex flex-col items-center">
                   <button className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
@@ -59,7 +60,7 @@ const LoginPage = () => {
                         />
                       </svg>
                     </div>
-                    <span className="ml-4">Sign Up with Google</span>
+                    <span className="ml-4">Sign In with Google</span>
                   </button>
 
                   <button className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline mt-5">
@@ -71,7 +72,7 @@ const LoginPage = () => {
                         />
                       </svg>
                     </div>
-                    <span className="ml-4">Sign Up with GitHub</span>
+                    <span className="ml-4">Sign In with GitHub</span>
                   </button>
                 </div>
 
@@ -99,7 +100,19 @@ const LoginPage = () => {
                   </div>
                   <div className="grid gap-2 mt-2">
                     <Label htmlFor="password">Password</Label>
-                    <Input id="password" type="password" required />
+                    <div className="relative">
+                      <Input
+                        id="password"
+                        type={showPassword ? "text" : "password"}
+                        required
+                      />
+                      <div
+                        className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
+                        onClick={togglePasswordVisibility}
+                      >
+                        {showPassword ? <EyeSlash /> : <Eye />}
+                      </div>
+                    </div>
                   </div>
                   <button className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                     <svg
