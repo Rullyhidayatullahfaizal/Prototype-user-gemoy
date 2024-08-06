@@ -1,5 +1,15 @@
+"use client"
+import { FollowingPointerDemo } from "@/components/makanan";
+
 const MenuMakananPage = () => {
-    return <div>Menu Makanan Page</div>;
+    return( 
+    <>
+      <div>
+        dsadsa
+      </div>
+      <FollowingPointerDemo></FollowingPointerDemo>
+    </>
+    )
   };
   
   

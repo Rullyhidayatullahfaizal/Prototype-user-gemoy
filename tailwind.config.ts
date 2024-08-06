@@ -1,6 +1,9 @@
 import type { Config } from 'tailwindcss';
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
 import tailwindcssAnimate from 'tailwindcss-animate'; // pastikan ini diinstal
+import defaultTheme from "tailwindcss/defaultTheme";
+import colors from "tailwindcss/colors"
+
 
 const config: Config = {
   content: [
